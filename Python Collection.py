@@ -204,4 +204,215 @@ print(flatten_list)
 
 # COMMAND ----------
 
+orders_list = [
+    [101,'2023-07-20 00:00:00.0',11590,'CLOSED'],
+    [102,'2023-07-20 00:00:00.0',259,'PENDING_PAYMENT'],
+    [103,'2023-07-20 00:00:00.0',11220,'COMPLETE'],
+]
+
+closed_orders = [ orders for orders in orders_list if orders[3]=='CLOSED' ]
+print(closed_orders)
+
+# COMMAND ----------
+
+# MAGIC %md ## unpacking 
+
+# COMMAND ----------
+
+orders = [101,'2023-07-20 00:00:00.0',11590,'CLOSED']
+customer_id = orders[0] 
+order_date = orders[1]
+order_amount = orders[2]
+order_status = orders[3]
+
+print(customer_id,order_date,order_amount,order_status)
+
+#### same can be achivabule with below
+
+customer_id,order_date,order_amount,order_status = orders
+print(customer_id,order_date,order_amount,order_status)
+
+
+# COMMAND ----------
+
+# MAGIC %md ## Slicing 
+
+# COMMAND ----------
+
+customer = [1,"Tirupal","XXXXXXXXX","XXXXXXXXXXXXX","6303 Health Plaza","Brownville","TX",78521]
+orders = [101,'2023-07-20 00:00:00.0',11590,'CLOSED']
+customer[0:2]
+customer[0:2]+customer[4:6]
+##Append two list
+#orders.append(customer)
+#print(orders)
+#[101, '2023-07-20 00:00:00.0', 11590, 'CLOSED', [1, 'Tirupal', 'XXXXXXXXX', 'XXXXXXXXXXXXX', '6303 Health Plaza', 'Brownville', 'TX', 78521]]
+
+orders.extend(customer)
+
+print(orders)
+
+# COMMAND ----------
+
+# MAGIC %md print each element with index
+
+# COMMAND ----------
+
+for i,e in enumerate(orders):
+    #print(i,e)
+    print(f'Index: {i}, Element :{e}')
+
+# COMMAND ----------
+
+#Count the number of occurances for each word
+
+input_list = ["tirupal","muchivolu","srikalahshi","TIRUPALU"]
+#OR
+i= input("Enter some statement : ")
+
+input_list = i.split(" ")
+
+input_list_lower = [ i.lower() for i in input_list]
+
+input_list_lower=list(set(input_list_lower))
+
+input_list_lower = [ (word,input_list_lower.count(word)) for word in input_list_lower]
+
+print(input_list_lower)
+
+
+# COMMAND ----------
+
+from collections import Counter
+l1 = ['CLOSED', 'PENDING_PAYMENT', 'COMPLETE', 'CLOSED', 'COMPLETE', 'COMPLETE', 'COMPLETE', 'PROCESSING', 'PENDING_PAYMENT', 'PENDING_PAYMENT']
+counter = Counter(l1)
+l2 = [(i, j) for i, j in counter.items()]
+
+print(l2)
+
+# COMMAND ----------
+
+l1 = ['CLOSED', 'PENDING_PAYMENT', 'COMPLETE', 'CLOSED', 'COMPLETE', 'COMPLETE', 'COMPLETE', 'PROCESSING', 'PENDING_PAYMENT', 'PENDING_PAYMENT']
+
+# Create a dictionary to count occurrences
+counts = {}
+for item in l1:
+    if item in counts:
+        counts[item] += 1
+    else:
+        counts[item] = 1
+
+counts
+
+# Convert the dictionary to a list of tuples using list comprehension
+#l2 = [(key, counts[key]) for key in counts]
+
+#print(l2)
+
+
+# COMMAND ----------
+
+ls1 = [
+    [101, 'John', 'IT', 60000],
+    [102, 'Alice', 'HR', 50000],
+    [103, 'Bob', 'Finance', 70000],
+    [104, 'Emma', 'IT', 55000],
+    [105, 'David', 'Finance', 75000],
+    [106, 'Sophia', 'HR', 48000]
+]
+
+print(ls1)
+
+# COMMAND ----------
+
+
+ls1
+all_Value = {}
+
+for i in ls1:
+    dept = i[2]
+    salary = i[3]
+    k=[dept,salary]
+    all_Value[dept] = i[2]
+    all_Value[dept]['Salary'] = i[3]
+    print(all_Value)
+
+    
+    
+
+
+
+
+# COMMAND ----------
+
+# List of employee records
+employees = [
+    [101, 'John', 'IT', 60000],
+    [102, 'Alice', 'HR', 50000],
+    [103, 'Bob', 'Finance', 70000],
+    [104, 'Emma', 'IT', 55000],
+    [105, 'David', 'Finance', 75000],
+    [106, 'Sophia', 'HR', 48000]
+]
+
+# Dictionary to store total salaries and counts for each department
+department_salaries = {}
+
+# Iterate through the employee records
+for emp in employees:
+    department = emp[2]
+    salary = emp[3]
+    
+    if department in department_salaries:
+        department_salaries[department]['total_salary'] += salary
+        department_salaries[department]['count'] += 1
+    else:
+        department_salaries[department] = {'total_salary': salary, 'count': 1}
+print(department_salaries)
+# Calculate and print the average salary for each department
+#for department, values in department_salaries.items():
+#    average_salary = values['total_salary'] / values['count']
+#    print(f"{department}: Average Salary - {average_salary:.2f}")
+
+
+# COMMAND ----------
+
+# MAGIC %md Dictionary
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC Dictionary - Mutable {"one":"1","two":"2"}
+# MAGIC
+# MAGIC  --> Dictionary is mutable
+# MAGIC  --> we can change  the value for particular key
+# MAGIC  --> we can add more entries
+# MAGIC  --> we can remove some of the entries
+# MAGIC
+# MAGIC  --> key is immutable
+
+# COMMAND ----------
+
+word_dict = {"intelligent":"the one who is really brialliant"}
+
+word_dict["intelligent"]
+
+# COMMAND ----------
+
+
+
+# COMMAND ----------
+
+orders_Data = [(100,1000),(200,2000),(30,1000)]
+order_dict = dict(orders_Data)
+
+print(order_dict.keys)
+
+print(order_dict.values)
+
+for order in order_dict:
+    print(order)
+
+# COMMAND ----------
+
 
