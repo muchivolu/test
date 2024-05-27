@@ -264,4 +264,20 @@ df1.show()
 
 # COMMAND ----------
 
+print("tirupal")
+
+# COMMAND ----------
+
+lst = [1,2,3,4]
+print(len(lst))
+for i in range(1,len(lst)+1):
+    for k in lst:
+        print(i)
+        #if(k[i] + k[i+1] == 5):
+        #    print(k[i],k[i+1])
+
+
+
+# COMMAND ----------
+
 
